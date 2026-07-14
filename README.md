@@ -28,18 +28,23 @@ Every 2-terminal part is reduced to a Norton equivalent: a conductance `g` in pa
 
 Every part's terminals become nodes in a nodal-analysis matrix. The app builds the conductance matrix, solves it with Gaussian elimination, checks whether each LED's assumed on/off state was consistent with the result, and re-solves (up to 10 passes) until it converges. That gives real node voltages, which get turned back into per-part current, voltage, and power for the inspector and the glow effects.
 
-## Adding to GitHub
+## How to launch it
 
-```bash
-git init
-git add index.html README.md
-git commit -m "Circuit builder"
-git branch -M main
-git remote add origin <your-repo-url>
-git push -u origin main
-```
+No install, no build step — just open the file:
 
-To host it for free with GitHub Pages: repo **Settings → Pages → Deploy from branch → main → / (root)**.
+- **Locally:** double-click `index.html`, or drag it into any browser window.
+- **Live on the web:** if GitHub Pages is enabled for this repo, open the Pages URL shown in the repo's **Settings → Pages** (or under **About** on the main repo page).
+
+## How to use it
+
+1. **Place a part** — click a part in the left rail (Battery, Resistor, LED, Switch), then click anywhere on the board to drop it.
+2. **Wire it up** — click **Wire**, then click a terminal (the small circle at each end of a part), then click a second terminal to connect them. Click **Wire** again to exit wiring mode.
+3. **Inspect / edit** — click any part or wire to see its live current, voltage, and power in the right-hand panel. Batteries, resistors, switches, and LED colors are editable there.
+4. **Move, rotate, delete** — drag a placed part to reposition it, press `R` to rotate the selected part, press `Del`/`Backspace` (or use the trash button) to remove it.
+5. **Toggle a switch** — click directly on a switch to flip it open/closed.
+6. **Save your work** — use **export .json** in the top bar to download your circuit, and **import .json** to load it back in later.
+
+Traces glow from teal (idle) to hot pink (energized) as current flows, and LEDs light up once there's enough forward voltage across them — the whole board updates live as you build.
 
 ## Ideas for extending it
 
